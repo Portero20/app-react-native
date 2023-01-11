@@ -42,3 +42,8 @@ const styles = StyleSheet.create({
 
 <Button title='Add' color='#626893'/> => el title es el nombre que se le asigna al boton, tambien puedo asignarle un color
 
+//TextInput tiene varias propiedades 
+
+autoComplete='off' => sacar autocompletado
+autoCorrect='false' => sacar autocorrector
+autoCapitalize='none' => para cuando escribamos la primera letra no sea en mayuscula
