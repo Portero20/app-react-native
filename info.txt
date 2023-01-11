@@ -1,0 +1,42 @@
+Core components:
+
+Dentro de react native, podemos encontrar los más comunes como:
+
+<View></View> => equivalente a un contenedor o div 
+
+<Text></Text> => texto ya sea como span, h1, etc 
+
+<Image></Image> => imagenes 
+
+<Button></Button> => boton (nos permite añadir alguna función) su tamaño y su dimensión no son modificables, toma el
+tamaño de su contenedor tanto en android como ios 
+
+//Aqui es donde van todos los estilos 
+
+const styles = StyleSheet.create({
+  container: {
+
+    flex: 1,
+    backgroundColor: '#fff',
+    
+  },
+  inputContainer: {
+
+    marginTop: 50,
+    marginHorizontal: 20
+
+  },
+  input:{
+
+    borderBottomColor: '#626893',
+    borderBottomWidth: 1,
+    height: 40,
+    color: '#212121'
+
+  }
+});
+
+//El button tiene varias propiedades 
+
+<Button title='Add' color='#626893'/> => el title es el nombre que se le asigna al boton, tambien puedo asignarle un color
+
