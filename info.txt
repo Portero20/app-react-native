@@ -2,7 +2,7 @@ Core components:
 
 Dentro de react native, podemos encontrar los más comunes como:
 
-<View></View> => equivalente a un contenedor o div 
+<View></View> => equivalente a un contenedor o div, solo se puede tener un contenedor
 
 <Text></Text> => texto ya sea como span, h1, etc 
 
