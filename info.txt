@@ -181,7 +181,41 @@ Leer bien el mensaje de error
 Utilizar console.log de traza de flujo para utilizar la consola 
 Chrome debugger y breakpoints 
 
+//Chrome debugger 
 
+Vamos al emulador y agitamos el celular para poder ver el menu de desarrollo para poder habilitar un par de caracteristicas 
 
+Hacemos click en debug remote js 
 
+Cada cosa que escribamos en la consola, se podra ver en la consola 
 
+Es una herramienta adiccional para debuggear pero consume demasiada memoria, solamente usarlo cuando sea necesario 
+
+Podemos utilizar el debugger remoto tambien para utilizar el inspector para evaluar cada uno de los elementos 
+
+Tambien podemos ir a la fuente de nuestro codigo, especificamente en: 
+
+Sources - Debugger - url del proyecto (y podemos ver donde tenemos nuestro codigo compilado)
+
+En app.js es donde tenemos todo nuestro bloque de codigo para saber que pasa cuando se ejecutan ciertas 
+funcionalidades 
+
+//Arquitectura del proyecto
+
+nos creamos un archivo que se llame index.js 
+
+import App from './src/index'; //llamamos a App
+
+import { registerRootComponent } from "expo"; => esto nos dice cual es la raiz de mi app 
+
+registerRootComponent(App); //recibe la vista o componente que se refiere a la raiz de la app 
+
+Tenemos que borrar el main del package json porque queremos indicarle donde es la raiz de nuestro proyecto, asi expo 
+no tome por defecto la ruta de main 
+
+//Creamos una raiz para todos mis componentes que yo exporte de mi carpeta de componentes 
+
+En index.js que seria mi raiz:
+
+export {defaut ass AddItem} from './add-item => exportamos por default el nombre del componente que yo quiero utilizar y 
+ese componente lo sacara de la carpeta de add item 
