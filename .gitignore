@@ -1,4 +1,3 @@
-info.txt 
 node_modules/
 .expo/
 dist/
@@ -10,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+info.txt 
 
 # macOS
 .DS_Store

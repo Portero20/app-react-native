@@ -48,7 +48,9 @@ autoComplete='off' => sacar autocompletado
 autoCorrect='false' => sacar autocorrector
 autoCapitalize='none' => para cuando escribamos la primera letra no sea en mayuscula
 
-//Clase eventos y lista optimizada
+
+
+Clase eventos y lista optimizada:
 
 onChangeText{(text) => setTask(text)} => retorna como un callback el valor que yo he escrito dentro del campo, en este caso el TextInput,
 tengo que setear el valor de lo que yo he escrito en el campo 
@@ -118,6 +120,66 @@ const keyExtractor = (item) => item.id; => recibe el item y seteamos el id de nu
 
 //Trabajamos con el modal de react native 
 
+
+const [isModalVisible, setModalVisible] = useState(false); => tenemos que tener una caracteristica que me permita decir 
+que el estado va a ser visible o no y por defecto el estado es falso porque por default no se va a mostrar, solo se vera 
+si interactuamos con algún elemento en particular 
+
+//necesitamos saber los datos del elemento que yo presione 
+
+const [selectedTask, setSelectedTask] = useState(null); => añadimos un estado de seleccion de datos y por default la tarea 
+no va a estar seleccionada, la tarea por defecto va a estar vacia hasta que yo lo presione 
+
+
+tiene que ser presionable asi pueda interactuar con el elemento 
+
+<TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}> => le pasamos todo el item para setearlo como seleccion 
+    <Text style={styles.itemList}>{item.value}</Text>
+</TouchableOpacity>
+
+const onHandlerModal = (item) => { => el item lo recibimos del onHandlerModal de renderItem
+    
+  setModalVisible(!isModalVisible); => invertimos para que sea true y se muestre el modal 
+  setSelectedTask(item); => lo seteamos como la tarea seleccionada 
+
+}
+
+El modal tiene una propiedad que se llama visible que me va a demostrar si el modal se muestra o no y con animationType 
+podemos elegir que animación queremos que tenga 
+
+<Text style={styles.selectedTask}>{selectedTask?.value}</Text> => le pasamos el optionalChanging para que no de error 
+
+
+//onHandleCancel
+
+const onHandleCancel = () => {
+
+  setModalVisible(!isModalVisible); => debemos invertir el estado del modal 
+  setSelectedTask(null); //vaciamos la seleccion y lo ponemos en null
+
+}
+
+//onHandlerDelete
+
+const onHandleDelete = () => {
+
+  //seteamos nuestra lista de tareas, recibimos la lista previa y por esa lista vamos a filtrar cada una de las tareas por 
+  el id, queremos que nos retorne los valores diferentes al elemento seleccionado (eliminado) 
+  setTasks((prevTaskList) => prevTaskList.filter((task) => task.id !== selectedTask.id));
+  setModalVisible(!isModalVisible); //ocultamos el modal cuando se elimine la tarea 
+
+}
+
+
+
+
+Clase Debug y Split Components:
+
+//Como debuggear 
+
+Leer bien el mensaje de error 
+Utilizar console.log de traza de flujo para utilizar la consola 
+Chrome debugger y breakpoints 
 
 
 
