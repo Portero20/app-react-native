@@ -47,3 +47,79 @@ const styles = StyleSheet.create({
 autoComplete='off' => sacar autocompletado
 autoCorrect='false' => sacar autocorrector
 autoCapitalize='none' => para cuando escribamos la primera letra no sea en mayuscula
+
+//Clase eventos y lista optimizada
+
+onChangeText{(text) => setTask(text)} => retorna como un callback el valor que yo he escrito dentro del campo, en este caso el TextInput,
+tengo que setear el valor de lo que yo he escrito en el campo 
+
+//o directamente puedo escribir un metodo que setee ese valor, como lo es: 
+
+const onHandlerChange = (text) => {
+
+  setTask(text)
+
+}
+
+//cuando clickeemos en el boton de añadir se guarde en un estado 
+
+const [tasks, setTasks] = useState([]); => aqui es donde guardamos nuestra lista de tareas y el estado lo inicializamos 
+con un arreglo vacio porque no va a tener ninguna tarea previa 
+
+El boton tiene un evento que se llama onPress que se ejecuta cada vez que nosotros presionamos el boton 
+
+nos creamos un metodo que se llame onHandlerSubmit que se ejecutara al momento que yo presione el boton:
+
+const onHandlerSubmit = () => {
+
+  setTasks([ //este metodo lo que hara es guardar las tareas, seteamos la lista de tareas 
+
+    ...tasks, //hacemos una copia de las tareas anteriores con el spread 
+
+    { //mis tareas serán un arreglo de objetos 
+
+      id: Math.random().toString(), //tendra un id que va a ser un número aleatorio y le pongo toString para que me lo convierta en tipo cadena 
+      value: task //el valor de las tareas va a ser el valor de mi estado (task)
+    }
+  ]);
+
+  setTask(''); //y una vez clickemos debemos vaciar las tareas porque tenemos que crear una nueva 
+
+}
+
+En el boton nosotros tendremos una validación:
+
+<Button disabled={!task} title='Add' color='#626893' onPress={onHandlerSubmit}/> => el boton va a estar deshabilitado 
+cuando no exista el estado y lo ponemos asi: !task 
+
+//Renderizar o mostrar la lista de tareas utilizando FlatList (podemos utilizarlo para listas basicas - listas planas)
+
+El componente de FlatList tiene dos propiedades que son requeridas y obligatorias 
+
+1) Los datos que va a mostrar, es decir los datos que va a renderizar (data)
+
+2) Render item es el componente que va a renderizar la lista en si (renderItem)
+
+3) El valor adiccional es el key extractor, es decir el identificador para cada uno de los elementos de la lista (keyExtractor)
+
+//el renderItem destructura cada uno de los elementos de la lista, lo creamos como un componente a parte para ahorrar código
+const renderItem = ({item}) => (
+
+    <TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}>
+      <Text style={styles.itemList} key={item.id}>{item.value}</Text> => sacamos la key porque eso lo pondremos en el keyExtractor
+    </TouchableOpacity>
+
+  )
+
+const keyExtractor = (item) => item.id; => recibe el item y seteamos el id de nuestra lista 
+
+
+<FlatList data={tasks} renderItem={renderItem} keyExtractor={keyExtractor} style={styles.listContainer}/>
+
+//Trabajamos con el modal de react native 
+
+
+
+
+
+
